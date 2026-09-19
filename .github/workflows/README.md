@@ -1,0 +1,18 @@
+# Automated npm publishing
+
+`publish-ui.yml` publishes a patch release when a commit reaches `main` and changes the component package.
+
+Before enabling it:
+
+1. Choose the final npm package name in `packages/ui/package.json`. The current `@forma-design/ui` name is provisional and must be owned by the npm account or organization that publishes it.
+2. Push this repository to GitHub.
+3. On npm, open the package's **Trusted publishers** settings and add **GitHub Actions**.
+4. Enter the exact GitHub owner, repository, and workflow filename `publish-ui.yml`.
+5. Allow the publisher to run `npm publish` directly.
+6. In GitHub, enable workflow read/write permissions under **Settings → Actions → General** if the workflow cannot push its version commit.
+
+The workflow uses OpenID Connect (`id-token: write`) and stores no npm token. It runs tests before publishing, increments the patch version, builds `packages/ui`, publishes the package publicly, and commits the changed package version and lockfile back to `main`.
+
+The workflow only runs for changes under `packages/ui`, `package.json`, or `package-lock.json`. Documentation-only changes do not create npm releases. Manual runs are available through the **Run workflow** button.
+
+Every qualifying push creates a patch release. For larger feature or breaking releases, change the version manually and adjust the workflow to use that versioning policy before publishing.
