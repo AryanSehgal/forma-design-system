@@ -32,6 +32,6 @@ Checked through the in-app browser with desktop and phone viewport settings:
 
 ## Scope and remaining release work
 
-These results apply to this local review build. They are not a whole-site WCAG certification, exhaustive state coverage, or a full cross-browser matrix. Manual screen-reader testing, a formal accessibility audit, and testing additional browser/device combinations remain appropriate before a public library release.
+These results apply to the local review build that produced the deployed playground. They are not a whole-site WCAG certification, exhaustive state coverage, or a full cross-browser matrix. Manual screen-reader testing, a formal accessibility audit, and testing additional browser/device combinations remain appropriate for future releases.
 
-Package name ownership, licensing, GitHub setup, npm publishing, and Vercel deployment are intentionally pending review. No publishing actions were performed.
+The package is publicly available as [`@aryan_sehgal/forma-ui`](https://www.npmjs.com/package/@aryan_sehgal/forma-ui), and the playground is deployed at [forma-design-system-docs.vercel.app/getting-started](https://forma-design-system-docs.vercel.app/getting-started). GitHub repository setup, npm Trusted Publishing configuration, and licensing remain release-management tasks rather than validation results.
