@@ -1,15 +1,14 @@
 # Automated npm publishing
 
-`publish-ui.yml` publishes a patch release when a commit reaches `main` and changes the component package.
+`publish-ui.yml` publishes a patch release when a commit reaches `main` and changes the component package. The package name is [`@aryan_sehgal/forma-ui`](https://www.npmjs.com/package/@aryan_sehgal/forma-ui).
 
-Before enabling it:
+To enable or verify it:
 
-1. Choose the final npm package name in `packages/ui/package.json`. The current `@aryan_sehgal/forma-ui` name is provisional and must be owned by the npm account or organization that publishes it.
-2. Push this repository to GitHub.
-3. On npm, open the package's **Trusted publishers** settings and add **GitHub Actions**.
-4. Enter the exact GitHub owner, repository, and workflow filename `publish-ui.yml`.
-5. Allow the publisher to run `npm publish` directly.
-6. In GitHub, enable workflow read/write permissions under **Settings → Actions → General** if the workflow cannot push its version commit.
+1. Push this repository to GitHub.
+2. On npm, open the package's **Trusted publishers** settings and add **GitHub Actions**.
+3. Enter the exact GitHub owner, repository, and workflow filename `publish-ui.yml`.
+4. Allow the publisher to run `npm publish` directly.
+5. In GitHub, enable workflow read/write permissions under **Settings → Actions → General** if the workflow cannot push its version commit.
 
 The workflow uses OpenID Connect (`id-token: write`) and stores no npm token. It runs tests before publishing, increments the patch version, builds `packages/ui`, publishes the package publicly, and commits the changed package version and lockfile back to `main`.
 
