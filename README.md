@@ -4,7 +4,7 @@ Forma UI is a reusable React component library and a companion design-system pla
 
 | Resource           | Link                                                                                                               |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| Live playground    | [forma-design-system-docs.vercel.app/getting-started](https://forma-design-system-docs.vercel.app/getting-started) |
+| Live playground    | [https://forma-design-system-docs.vercel.app/](https://forma-design-system-docs.vercel.app/) |
 | Public npm package | [@aryan_sehgal/forma-ui](https://www.npmjs.com/package/@aryan_sehgal/forma-ui)                                     |
 | Author             | [Aryan Sehgal](https://github.com/AryanSehgal)                                                                     |
 
