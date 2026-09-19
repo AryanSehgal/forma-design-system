@@ -2,6 +2,11 @@
   "name": "@aryan_sehgal/forma-ui",
   "version": "0.1.0",
   "description": "Accessible, composable React components with portable CSS tokens.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AryanSehgal/forma-design-system.git",
+    "directory": "packages/ui"
+  },
   "type": "module",
   "sideEffects": [
     "**/*.css"
