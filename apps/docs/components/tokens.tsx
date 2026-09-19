@@ -16,7 +16,7 @@ import {
   Switch,
   Avatar,
   Progress,
-} from '@forma-design/ui';
+} from '@aryan_sehgal/forma-ui';
 import { CodeBlock } from './code-block';
 import { ColorControl } from './lab';
 import { contrastRatio } from '@/lib/contrast';

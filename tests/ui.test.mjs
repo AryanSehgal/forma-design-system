@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { createElement as h } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { readFileSync } from 'node:fs';
-import { Button } from '@forma-design/ui/button';
-import { Input, Field } from '@forma-design/ui/input';
-import { Progress } from '@forma-design/ui/progress';
-import { Checkbox } from '@forma-design/ui/checkbox';
-import { catalog, defaults } from '@forma-design/ui/registry';
+import { Button } from '@aryan_sehgal/forma-ui/button';
+import { Input, Field } from '@aryan_sehgal/forma-ui/input';
+import { Progress } from '@aryan_sehgal/forma-ui/progress';
+import { Checkbox } from '@aryan_sehgal/forma-ui/checkbox';
+import { catalog, defaults } from '@aryan_sehgal/forma-ui/registry';
 
 test('buttons are non-submitting by default and accept explicit submit behavior', () => {
   assert.match(renderToStaticMarkup(h(Button, null, 'Save')), /type="button"/);
@@ -65,7 +65,7 @@ test('checkbox exposes the mixed state for partially selected groups', () => {
 test('every registered component is independently importable', async () => {
   assert.equal(new Set(catalog.map((c) => c.slug)).size, catalog.length);
   for (const component of catalog) {
-    const module = await import(`@forma-design/ui/${component.slug}`);
+    const module = await import(`@aryan_sehgal/forma-ui/${component.slug}`);
     assert.ok(module[component.name], `${component.name} must be exported`);
   }
 });

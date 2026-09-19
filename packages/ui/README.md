@@ -1,19 +1,19 @@
-# @forma-design/ui
+# @aryan_sehgal/forma-ui
 
 A composable React 19 component library with TypeScript declarations, semantic CSS tokens, and accessible interaction primitives.
 
 **Local review release:** this provisional package has not been published to npm. Install the generated tarball to try it in another app. A distribution license has not yet been selected.
 
 ```tsx
-import { Button } from '@forma-design/ui/button';
+import { Button } from '@aryan_sehgal/forma-ui/button';
 import {
   Dialog,
   DialogTrigger,
   DialogContent,
   DialogTitle,
   DialogDescription,
-} from '@forma-design/ui/dialog';
-import '@forma-design/ui/styles.css';
+} from '@aryan_sehgal/forma-ui/dialog';
+import '@aryan_sehgal/forma-ui/styles.css';
 
 export function Example() {
   return (
@@ -34,7 +34,7 @@ export function Example() {
 
 Individual entry points: `button`, `input`, `textarea`, `checkbox`, `switch`, `select`, `badge`, `avatar`, `progress`, `skeleton`, `card`, `separator`, `tabs`, `dialog`, `accordion`, `tooltip`.
 
-The package root also exports all components. `@forma-design/ui/registry` exports framework-independent, serializable component metadata and default editor values.
+The package root also exports all components. `@aryan_sehgal/forma-ui/registry` exports framework-independent, serializable component metadata and default editor values.
 
 ## Design
 

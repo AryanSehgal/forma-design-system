@@ -1,1 +1,1 @@
-export * from '@forma-design/ui/registry';
+export * from '@aryan_sehgal/forma-ui/registry';

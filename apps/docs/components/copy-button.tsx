@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Check, Copy } from 'lucide-react';
-import { Button } from '@forma-design/ui/button';
+import { Button } from '@aryan_sehgal/forma-ui/button';
 export function CopyButton({ text, label = 'Copy code' }: { text: string; label?: string }) {
   const [copied, setCopied] = useState(false);
   const [failed, setFailed] = useState(false);

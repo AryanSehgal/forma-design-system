@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 const config: NextConfig = {
-  transpilePackages: ['@forma-design/ui'],
+  transpilePackages: ['@aryan_sehgal/forma-ui'],
   devIndicators: false,
   webpack(config, { dev }) {
     if (dev) config.watchOptions = { ...config.watchOptions, poll: 1000, aggregateTimeout: 300 };

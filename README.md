@@ -2,7 +2,7 @@
 
 A local-first React component library with a responsive Next.js documentation website. The website consumes the **compiled public package**, not source aliases. The next page-builder project can install the same package from its own repository.
 
-**Status:** local review release, v0.1.0. Nothing has been pushed to GitHub, deployed, or published to npm. `@forma-design/ui` is a provisional package name; verify ownership/availability before publishing. A distribution license has not been selected.
+**Status:** local review release, v0.1.0. Nothing has been pushed to GitHub, deployed, or published to npm. `@aryan_sehgal/forma-ui` is a provisional package name; verify ownership/availability before publishing. A distribution license has not been selected.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ npm run dev
 
 Open http://127.0.0.1:3000. No environment variables, account, database, or paid API is needed. Theme preference is stored in localStorage; demo form values stay in memory.
 
-`npm run dev` builds the UI package before launching Next.js. After editing library source, run `npm run build -w @forma-design/ui` in another terminal. Changes in the docs app refresh automatically. The development configuration uses Webpack polling to work around local file-watcher limits.
+`npm run dev` builds the UI package before launching Next.js. After editing library source, run `npm run build -w @aryan_sehgal/forma-ui` in another terminal. Changes in the docs app refresh automatically. The development configuration uses Webpack polling to work around local file-watcher limits.
 
 ## What’s included
 
@@ -73,9 +73,9 @@ npm install /absolute/path/to/artifacts/forma-design-ui-0.1.0.tgz
 ```tsx
 'use client';
 
-import { Button } from '@forma-design/ui/button';
-import { Input, Field } from '@forma-design/ui/input';
-import '@forma-design/ui/styles.css'; // Usually once in your root layout.
+import { Button } from '@aryan_sehgal/forma-ui/button';
+import { Input, Field } from '@aryan_sehgal/forma-ui/input';
+import '@aryan_sehgal/forma-ui/styles.css'; // Usually once in your root layout.
 
 export function ProjectForm() {
   return (
@@ -100,7 +100,7 @@ DialogContent, SelectContent and TooltipContent accept a `container` prop for po
 ## Reuse in the page builder
 
 ```ts
-import { catalog, defaults } from '@forma-design/ui/registry';
+import { catalog, defaults } from '@aryan_sehgal/forma-ui/registry';
 
 const button = catalog.find((component) => component.slug === 'button');
 if (button) {

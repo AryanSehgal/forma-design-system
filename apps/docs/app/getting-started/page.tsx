@@ -8,7 +8,7 @@ import {
   Check,
   FolderTree,
 } from 'lucide-react';
-import { Badge, Button } from '@forma-design/ui';
+import { Badge, Button } from '@aryan_sehgal/forma-ui';
 import { CodeBlock } from '@/components/code-block';
 export const metadata = { title: 'Getting started' };
 export default function Page() {
@@ -78,7 +78,7 @@ export default function Page() {
             </p>
             <CodeBlock
               title="app/layout.tsx"
-              code={`import '@forma-design/ui/styles.css';\nimport './globals.css';\n\nexport default function RootLayout({ children }: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang="en">\n      <body>{children}</body>\n    </html>\n  );\n}`}
+              code={`import '@aryan_sehgal/forma-ui/styles.css';\nimport './globals.css';\n\nexport default function RootLayout({ children }: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang="en">\n      <body>{children}</body>\n    </html>\n  );\n}`}
             />
           </section>
           <section className="doc-section">
@@ -91,7 +91,7 @@ export default function Page() {
             </p>
             <CodeBlock
               title="components/save-button.tsx"
-              code={`'use client';\n\nimport { useState } from 'react';\nimport { Button } from '@forma-design/ui/button';\n\nexport function SaveButton() {\n  const [saved, setSaved] = useState(false);\n  return (\n    <Button onClick={() => setSaved(true)}>\n      {saved ? 'Saved' : 'Save changes'}\n    </Button>\n  );\n}`}
+              code={`'use client';\n\nimport { useState } from 'react';\nimport { Button } from '@aryan_sehgal/forma-ui/button';\n\nexport function SaveButton() {\n  const [saved, setSaved] = useState(false);\n  return (\n    <Button onClick={() => setSaved(true)}>\n      {saved ? 'Saved' : 'Save changes'}\n    </Button>\n  );\n}`}
             />
           </section>
           <section className="doc-section">
@@ -118,7 +118,7 @@ export default function Page() {
             </p>
             <CodeBlock
               title="registry.ts"
-              code={`import { catalog, defaults } from '@forma-design/ui/registry';\n\nconst button = catalog.find(component => component.slug === 'button');\nif (button) {\n  const initialProps = defaults(button);\n  // Use button.controls to render your property editor.\n}`}
+              code={`import { catalog, defaults } from '@aryan_sehgal/forma-ui/registry';\n\nconst button = catalog.find(component => component.slug === 'button');\nif (button) {\n  const initialProps = defaults(button);\n  // Use button.controls to render your property editor.\n}`}
             />
           </section>
         </div>

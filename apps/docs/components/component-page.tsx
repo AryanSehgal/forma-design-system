@@ -24,7 +24,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
-} from '@forma-design/ui';
+} from '@aryan_sehgal/forma-ui';
 import type { ComponentDefinition } from './catalog';
 import { catalog, defaults } from './catalog';
 import { CodeBlock } from './code-block';

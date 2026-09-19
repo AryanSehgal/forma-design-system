@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@forma-design/ui/styles.css';
+import '@aryan_sehgal/forma-ui/styles.css';
 import './globals.css';
 import { Shell } from '@/components/shell';
 export const metadata: Metadata = {

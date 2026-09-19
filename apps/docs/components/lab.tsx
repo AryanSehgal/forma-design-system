@@ -30,7 +30,7 @@ import {
   TabsList,
   TabsTrigger,
   TabsContent,
-} from '@forma-design/ui';
+} from '@aryan_sehgal/forma-ui';
 import type { AxeResults } from 'axe-core';
 import { contrastRatio } from '@/lib/contrast';
 export function AuditPanel({

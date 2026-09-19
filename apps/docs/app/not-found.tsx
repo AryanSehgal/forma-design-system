@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@forma-design/ui';
+import { Button } from '@aryan_sehgal/forma-ui';
 export default function NotFound() {
   return (
     <div className="content-page">

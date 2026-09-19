@@ -25,7 +25,7 @@ import {
   DialogDescription,
   Input,
   TooltipProvider,
-} from '@forma-design/ui';
+} from '@aryan_sehgal/forma-ui';
 import { catalog } from './catalog';
 export function Logo() {
   return (

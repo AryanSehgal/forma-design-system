@@ -43,7 +43,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from '@forma-design/ui';
+} from '@aryan_sehgal/forma-ui';
 import { catalog } from './catalog';
 import { CopyButton } from './copy-button';
 export function Overview() {
@@ -93,8 +93,8 @@ export function Overview() {
         </div>
         <div className="install-command">
           <span className="terminal-symbol">$</span>
-          <code>npm install @forma-design/ui</code>
-          <CopyButton text="npm install @forma-design/ui" label="Copy installation command" />
+          <code>npm install @aryan_sehgal/forma-ui</code>
+          <CopyButton text="npm install @aryan_sehgal/forma-ui" label="Copy installation command" />
         </div>
       </div>
       <div className="local-note">
