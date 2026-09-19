@@ -1,81 +1,41 @@
-# Forma — design system & component playground
+# Forma UI
 
-A local-first React component library with a responsive Next.js documentation website. The website consumes the **compiled public package**, not source aliases. The next page-builder project can install the same package from its own repository.
+Forma UI is a reusable React component library and a companion design-system playground built with Next.js. It provides accessible primitives, semantic design tokens, interactive documentation, and metadata that can be consumed by the separate visual page builder project.
 
-**Status:** local review release, v0.1.0. Nothing has been pushed to GitHub, deployed, or published to npm. `@aryan_sehgal/forma-ui` is a provisional package name; verify ownership/availability before publishing. A distribution license has not been selected.
+| Resource           | Link                                                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Live playground    | [forma-design-system-docs.vercel.app/getting-started](https://forma-design-system-docs.vercel.app/getting-started) |
+| Public npm package | [@aryan_sehgal/forma-ui](https://www.npmjs.com/package/@aryan_sehgal/forma-ui)                                     |
+| Author             | [Aryan Sehgal](https://github.com/AryanSehgal)                                                                     |
 
-## Run locally
+## What is included
 
-Requirements: Node.js 22+ and npm 10+.
+- 16 component families: Button, Input/Field, Textarea, Checkbox, Switch, Select, Badge, Avatar, Progress, Skeleton, Card, Separator, Tabs, Dialog, Accordion, and Tooltip.
+- Responsive component documentation with editable props, generated code, API summaries, keyboard guidance, and reset controls.
+- A theme studio with palettes, custom colors, radius and typography controls, CSS export, and download support.
+- An accessibility lab with contrast calculations, keyboard exercises, a manual checklist, and visible axe-core results.
+- Searchable documentation with Command/Ctrl+K navigation.
+- Light and dark themes, scoped preview themes, CSS custom properties, and portal-aware floating components.
+- A serializable component registry for the page builder: catalog entries describe editor controls and default values without coupling the builder to the docs app.
 
-```sh
-npm install
-npm run dev
-```
+Complex interactions use Radix primitives for focus management, keyboard behavior, semantics, and controlled/uncontrolled state. Forma owns the public component API, styling, tokens, examples, and editor metadata.
 
-Open http://127.0.0.1:3000. No environment variables, account, database, or paid API is needed. Theme preference is stored in localStorage; demo form values stay in memory.
+## Install the public package
 
-`npm run dev` builds the UI package before launching Next.js. After editing library source, run `npm run build -w @aryan_sehgal/forma-ui` in another terminal. Changes in the docs app refresh automatically. The development configuration uses Webpack polling to work around local file-watcher limits.
-
-## What’s included
-
-- **16 component families:** Button, Input/Field, Textarea, Checkbox, Switch, Select, Badge, Avatar, Progress, Skeleton, Card, Separator, Tabs, Dialog, Accordion, Tooltip.
-- Responsive collection overview with working example compositions.
-- Individual component pages with editable props, generated code, API summaries, keyboard guidance, and reset controls.
-- Scoped light/dark previews and persistent website theme selection.
-- Theme studio with five palettes, custom color, radius, typography, CSS copying and download.
-- Accessibility lab with contrast calculations, keyboard exercises, manual checklist, and real axe-core scans.
-- Searchable documentation with Command/Ctrl+K.
-- Optional WebMCP read/configure tools on component pages, with validated inputs and lifecycle cleanup.
-
-The more complex interactive components use **Radix primitives** for keyboard behavior, semantics, focus management, and controlled/uncontrolled state. Forma supplies the styling, public wrappers, theme tokens, property metadata, examples, and integration. It is not a claim of having written Radix’s accessibility machinery.
-
-## Repository layout
-
-```text
-apps/docs/               Next.js App Router showcase
-  app/                   Routes, root layout and website styles
-  app/api/theme/         Validated CSS attachment endpoint
-  components/            Documentation controls and interactive demos
-  lib/                   Shared contrast and theme generation logic
-packages/ui/
-  src/                   Individual component sources and styles
-  src/registry.ts        Serializable metadata for editors/playgrounds
-  dist/                  Built ESM, declarations, source maps, stylesheet
-  scripts/               Build housekeeping
-scripts/pack.mjs         Create the installable package artifact
-tests/ui.test.mjs        Public-package regression tests
-artifacts/               Generated npm tarball (ignored by Git)
-```
-
-## Verify
+Forma UI expects React 19 and React DOM 19 as peer dependencies. It does not require Next.js.
 
 ```sh
-npm test                 # 9 package regression tests, against built exports
-npm run typecheck        # Both workspaces
-npm run build            # Library + production Next.js build
-npm run format:check     # Source formatting
-npm run pack:ui           # Build the standalone npm artifact
+npm install @aryan_sehgal/forma-ui
 ```
 
-Browser checks and their limitations are recorded in [VALIDATION.md](./VALIDATION.md). Automated axe results are scoped to the visible preview; they do not certify whole-site WCAG compliance. Closed overlays and state-dependent content need separate testing. Manual screen-reader validation remains a release task.
-
-## Install in a separate repository
-
-```sh
-# Run here:
-npm run pack:ui
-
-# Run in the consuming React 19 application:
-npm install /absolute/path/to/artifacts/forma-design-ui-0.1.0.tgz
-```
+Import the shared stylesheet once in the application root, then import components from focused entry points:
 
 ```tsx
 'use client';
 
 import { Button } from '@aryan_sehgal/forma-ui/button';
-import { Input, Field } from '@aryan_sehgal/forma-ui/input';
-import '@aryan_sehgal/forma-ui/styles.css'; // Usually once in your root layout.
+import { Field, Input } from '@aryan_sehgal/forma-ui/input';
+import '@aryan_sehgal/forma-ui/styles.css';
 
 export function ProjectForm() {
   return (
@@ -89,41 +49,110 @@ export function ProjectForm() {
 }
 ```
 
-The package has no Next.js dependency. React and React DOM are peers, so it uses the consumer’s React instance. Individual ESM entry points allow unused JavaScript to be omitted by a consumer’s bundler. The CSS is a single shared stylesheet and is explicitly retained as a side effect. All component entry points currently carry a client boundary; `registry` is a plain, server-safe data module.
+The package root exports all components. Individual ESM entry points are available for `button`, `input`, `textarea`, `checkbox`, `switch`, `select`, `badge`, `avatar`, `progress`, `skeleton`, `card`, `separator`, `tabs`, `dialog`, `accordion`, and `tooltip`. The `@aryan_sehgal/forma-ui/registry` entry point exports serializable `catalog` and `defaults` data for editor integrations.
 
-## Theme boundaries
+## Theming
 
-Use semantic variables from `styles.css`. Override them on the document or a container. Set `data-f-theme="dark"` for the built-in dark palette. Theme-studio exports target the light baseline; define separate dark overrides if you want a custom dark theme.
+Use the semantic `--f-*` variables from `styles.css` and scope a dark theme with `data-f-theme="dark"`:
 
-DialogContent, SelectContent and TooltipContent accept a `container` prop for portal placement. This lets floating UI inherit the same scoped theme as its trigger. By default, they portal into the document body. The component playground supplies its own themed container. The editor shell and user-created content in the future page builder should have separate theme containers.
-
-## Reuse in the page builder
-
-```ts
-import { catalog, defaults } from '@aryan_sehgal/forma-ui/registry';
-
-const button = catalog.find((component) => component.slug === 'button');
-if (button) {
-  const initialValues = defaults(button);
-  // Build property controls using button.controls.
+```css
+.brand-theme {
+  --f-accent: #6d28d9;
+  --f-accent-foreground: #ffffff;
+  --f-radius-md: 10px;
 }
 ```
 
-The registry describes **editor controls**, not an unrestricted props-spreading API. For example, a `label` control maps to children for Button and to placeholder for Input. The consuming builder should define explicit adapters and version its saved document schema. Keep drag/drop, editor state, canvas layout, and persistence in the builder repository. Pin the library version and upgrade it intentionally.
+`DialogContent`, `SelectContent`, and `TooltipContent` accept a `container` prop for portal placement. Pass a themed container when floating content needs to inherit a local theme; otherwise the components portal to `document.body`.
 
-## Future Vercel deployment (not performed)
+## Local development
 
-Create a Vercel project connected to this repository:
+Requirements: Node.js 22+ and npm 10+.
 
-- Framework: Next.js
-- Root directory: `apps/docs`
-- Include source files outside the root directory: enabled
-- Install command: `cd ../.. && npm ci`
-- Build command: `cd ../.. && npm run build`
-- Output directory: Next.js default
+```sh
+npm install
+npm run dev
+```
 
-The future page builder will have its own repository and Vercel project. Publishing the UI package to npm is independent of deploying either website. Verify Vercel’s current Hobby eligibility and account limits before deployment.
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The dev script builds the package before starting the Next.js playground. After editing package source, run this in a second terminal:
 
-## Before a public release
+```sh
+npm run build -w @aryan_sehgal/forma-ui
+```
 
-Choose the final name and license, add repository metadata, do manual screen-reader testing, review the API compatibility policy, and publish only when ready. No GitHub or npm credentials are stored in this project.
+The docs app uses Webpack polling so local changes continue to refresh on systems with restrictive file-watcher limits.
+
+## Repository structure
+
+```text
+apps/docs/                 Next.js App Router playground
+  app/                     Routes, layout, API route, and global styles
+  components/              Documentation controls and interactive demos
+  lib/                     Theme and contrast utilities
+packages/ui/               Public React component package
+  src/                     Component sources, tokens, and registry
+  dist/                    Generated ESM, declarations, maps, and CSS
+scripts/pack.mjs           Creates the installable npm tarball
+tests/ui.test.mjs          Public package regression tests
+.github/workflows/         GitHub Actions release workflow and guide
+VALIDATION.md              Validation results and known testing limits
+```
+
+The playground and package are independent deliverables. The docs app consumes the compiled package, while another repository can install the same npm package and use the registry to build page-builder controls.
+
+## Verification commands
+
+```sh
+npm test                 # Build the package and run public-package regression tests
+npm run typecheck        # Type-check both workspaces
+npm run build            # Build the package and production Next.js playground
+npm run format:check     # Check Prettier formatting
+npm run pack:ui          # Build and create an installable package artifact
+```
+
+The current automated and browser validation is documented in [VALIDATION.md](./VALIDATION.md). The accessibility lab reports the tested state; it is not a whole-site WCAG certification. Manual screen-reader testing, a formal audit, and additional browser/device coverage remain appropriate for a production release.
+
+## Deploy the playground on Vercel
+
+The public playground is deployed at [forma-design-system-docs.vercel.app/getting-started](https://forma-design-system-docs.vercel.app/getting-started).
+
+For a new Vercel project connected to this monorepo, use:
+
+- **Framework preset:** Next.js
+- **Root directory:** `apps/docs`
+- **Include source files outside the root directory:** enabled
+- **Install command:** `cd ../.. && npm ci`
+- **Build command:** `cd ../.. && npm run build`
+- **Output directory:** Next.js default
+
+The future visual page builder should have its own repository and Vercel project. Deploying the playground, publishing the npm package, and deploying the builder are separate release operations.
+
+## Release the npm package
+
+The package is published publicly as [`@aryan_sehgal/forma-ui`](https://www.npmjs.com/package/@aryan_sehgal/forma-ui). To build and publish a release manually from this repository:
+
+```sh
+npm run build -w @aryan_sehgal/forma-ui
+npm publish --workspace=packages/ui --access public
+```
+
+The repository also includes [`.github/workflows/publish-ui.yml`](./.github/workflows/publish-ui.yml). After the GitHub repository is connected to npm Trusted Publishing, a push to `main` that changes `packages/ui`, `package.json`, or `package-lock.json` will:
+
+1. Install dependencies and run type checks and package tests.
+2. Increment the package patch version.
+3. Build and publish the package with GitHub Actions OIDC authentication.
+4. Commit the updated package version and lockfile back to `main`.
+
+Configure the workflow's exact GitHub owner, repository, and filename in the npm package's **Trusted publishers** settings. The workflow stores no long-lived npm token. Every qualifying push creates a patch release, so use a deliberate versioning policy for feature and breaking releases.
+
+## Contributing and accessibility
+
+Keep public components independently importable, preserve the `f-` class prefix and `--f-` token namespace, and update registry metadata when editor-facing props change. Consumers are responsible for accessible names, meaningful content, contrast, and testing the complete application state around these building blocks.
+
+## License
+
+No distribution license has been selected yet. Choose and add a license before accepting external contributions or encouraging redistribution.
+
+## Author
+
+Built by [Aryan Sehgal](https://github.com/AryanSehgal).
