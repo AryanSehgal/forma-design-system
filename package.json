@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "npm run build -w @aryan_sehgal/forma-ui && npm run dev -w @forma-design/docs",
     "build": "npm run build -w @aryan_sehgal/forma-ui && npm run build -w @forma-design/docs",
-    "typecheck": "npm run typecheck --workspaces",
+    "typecheck": "npm run build -w packages/ui && npm run typecheck --workspaces",
     "test": "npm run build -w @aryan_sehgal/forma-ui && node --test tests/*.test.mjs",
     "pack:ui": "npm run build -w @aryan_sehgal/forma-ui && node scripts/pack.mjs",
     "format": "prettier --write .",
