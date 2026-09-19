@@ -4,7 +4,7 @@
 
 Before enabling it:
 
-1. Choose the final npm package name in `packages/ui/package.json`. The current `@forma-design/ui` name is provisional and must be owned by the npm account or organization that publishes it.
+1. Choose the final npm package name in `packages/ui/package.json`. The current `@aryan_sehgal/forma-ui` name is provisional and must be owned by the npm account or organization that publishes it.
 2. Push this repository to GitHub.
 3. On npm, open the package's **Trusted publishers** settings and add **GitHub Actions**.
 4. Enter the exact GitHub owner, repository, and workflow filename `publish-ui.yml`.
