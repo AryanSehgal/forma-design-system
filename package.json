@@ -1,0 +1,24 @@
+{
+  "name": "forma-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run build -w @forma-design/ui && npm run dev -w @forma-design/docs",
+    "build": "npm run build -w @forma-design/ui && npm run build -w @forma-design/docs",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run build -w @forma-design/ui && node --test tests/*.test.mjs",
+    "pack:ui": "npm run build -w @forma-design/ui && node scripts/pack.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0",
+    "prettier": "^3.9.8",
+    "typescript": "^5.9.2"
+  }
+}
